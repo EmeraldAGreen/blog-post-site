@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/EmeraldAGreen/blog-post-site/issues"
   },
-  "homepage": "https://github.com/EmeraldAGreen/blog-post-site#readme"
+  "homepage": "https://github.com/EmeraldAGreen/blog-post-site#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "express-session": "^1.17.2"
+  }
 }
