@@ -1,0 +1,14 @@
+[
+    {
+      "name": "Handlebars",
+      "description": "Handlebars compiles templates into JavaScript functions."
+    },
+    {
+      "name": "MYSQL",
+      "description": "MySQL is an open-source relational database management system."
+    },
+    {
+      "name": "Sequelize",
+      "description": "Sequelize is a modern TypeScript and Node.js ORM for Postgres, MySQL, MariaDB, SQLite and SQL Server, and more."
+    }
+  ]
