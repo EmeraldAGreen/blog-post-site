@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Blog, Comment } = require('../../models');
 
 // Get all users (without showing their password)
-// /api/
+// /api/users/
 router.get('/', async (req, res) => {
     try {
       const userData = await User.findAll({
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
   });
   
 // Get blog posts by user id and include comments
-// /api/:id
+// /api/users/:id
   router.get('/:id', async (req, res) => {
     try {
       const userData = await User.findOne({
@@ -53,8 +53,8 @@ router.get('/', async (req, res) => {
   });
 
 // Create a new user (and check to see if that username already exists).
-// api/users/
-router.post('/', async (req, res) => {
+// api/users/signup
+router.post('/signup', async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
