@@ -1,9 +1,13 @@
 const router = require('express').Router();
 const { Comment} = require('../../models');
 
-// Update a comment post
+//WHEN I am idle on the site for more than a set time
+//THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
+const withAuth = require('../utils/auth')
+
+// Update a comment 
 // /api/comments/:id
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
       const updatedComment = await Comment.update(
         {
@@ -27,9 +31,9 @@ router.put('/:id', async (req, res) => {
     }
   });
 
-// Create a new comment
+// Add a new comment
 // /api/comments
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
@@ -42,9 +46,9 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Delete a comment by blog_id 
+// Delete a comment by user_id 
 // /api/comments/:id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const commentData = await Comment.destroy({
       where: {
