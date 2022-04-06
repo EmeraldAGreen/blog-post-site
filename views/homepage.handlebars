@@ -1,13 +1,13 @@
- <!-- We implement the built-in helper, #each. This helper will iterate over posts -->
+{{!-- WHEN I visit the site for the first time
+THEN I am presented with the homepage, which includes existing blog posts if any have been posted with the post title and the date created; navigation links for the homepage and the dashboard (main.handlebars); and the option to log in (main.handlebars)--}}
+
+  {{#if blogs.length}}
+<section class="container-fluid">
+<!-- We implement the built-in helper, #each. This helper will iterate over posts -->
   {{#each blogs as |blog|}}
-  <!-- For each blog in the array of blog objects, the following <div> will be rendered. -->
-    <div class="blog col-md-5 container-fluid">
-        <h1 class="row justify-content-space-around">
-             {{blog.name}}
-             {{blog.id}}
-        </h1>
-        <p class="row">{{blog.description}}</p>
-        <p class="row">{{blog.date-created}}</p>
-    </div>
-    <!-- Below, we close the #each helper. -->
+<!-- For each blog in the array of blog objects, the following <div> will be rendered. (See partials/blog-post.handlebars)-->
+   {{>blog-post blog}}
+<!-- Below, we close the #each helper. -->
   {{/each}}
+</section>
+  {{/if}}
