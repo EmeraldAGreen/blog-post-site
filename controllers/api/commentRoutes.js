@@ -3,7 +3,7 @@ const { Comment} = require('../../models');
 
 //WHEN I am idle on the site for more than a set time
 //THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
-const withAuth = require('../utils/auth')
+const withAuth = require('../../utils/auth')
 
 // Update a comment 
 // /api/comments/:id

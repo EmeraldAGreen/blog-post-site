@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Blog, Comment} = require('../../models');
-const withAuth = require('../utils/auth')
+const withAuth = require('../../utils/auth')
 
 // Get all blog posts 
 // /api/blogs/
