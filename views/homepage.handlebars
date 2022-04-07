@@ -7,6 +7,7 @@ THEN I am presented with the homepage, which includes existing blog posts if any
   {{#each blogs as |blog|}}
 <!-- For each blog in the array of blog objects, the following <div> will be rendered. (See partials/blog-post.handlebars)-->
    {{>blog-post blog}}
+   {{!-- pass the blog object to the partial --}}
 <!-- Below, we close the #each helper. -->
   {{/each}}
 </section>

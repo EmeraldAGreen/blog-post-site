@@ -25,8 +25,7 @@ router.get('/', async (req, res) => {
             attributes: ['name'],
           },
         ],
-      })
-
+      }) 
   // Serialize user data so templates can read it 
       const blogs = blogData.map((allBlogs) => allBlogs.get({ plain: true }));
   // Pass serialized data into Handlebars.js template as an object
