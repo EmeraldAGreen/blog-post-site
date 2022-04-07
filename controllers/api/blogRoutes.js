@@ -91,8 +91,8 @@ router.put('/:id', withAuth, async (req, res) => {
   });
 
 // Create a new blog post
-// /api/blogs
-router.post('/', withAuth, async (req, res) => {
+// /api/blogs/new
+router.post('/new', withAuth, async (req, res) => {
   try {
     const newBlog = await Blog.create({
       ...req.body,

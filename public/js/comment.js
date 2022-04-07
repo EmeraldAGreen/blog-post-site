@@ -8,9 +8,9 @@ async function commentFormHandler(event) {
       .value.trim();
 
 // Somehow using blog id for the window?
-    const blog_id = window.location.toString().split('/')[
-      window.location.toString().split('/').length - 1
-    ];
+    // const blog_id = window.location.toString().split('/')[
+    //   window.location.toString().split('/').length - 1
+    // ];
   
     if (comment) {
       const response = await fetch('/api/comments', {
