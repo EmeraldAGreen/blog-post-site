@@ -40,4 +40,18 @@ router.get('/', withAuth, async (req, res) => {
 
 // /dashboard/new
 // POST ROUTE TO CREATE A NEW BLOG POST
+router.post('/new', withAuth, async (req, res) => {
+  try {
+    const newBlog = await Blog.create(req.body);
+    req.session.save(() => {
+      req.session.user_id = newBlog.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(newBlog);
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;
