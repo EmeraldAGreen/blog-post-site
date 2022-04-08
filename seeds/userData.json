@@ -1,17 +1,14 @@
 [
     {
       "name": "Fifi",
-      "email": "fififire@hotmail.com",
       "password": "password12345"
     },
     {
       "name": "Alan",
-      "email": "alannala@gmail.com",
       "password": "password12345"
     },
     {
       "name": "Bruce",
-      "email": "sharkbait@aol.com",
       "password": "password12345"
     }
   ]

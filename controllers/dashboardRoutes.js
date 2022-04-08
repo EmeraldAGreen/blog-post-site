@@ -17,7 +17,8 @@ router.get('/', withAuth, async (req, res) => {
                   'id', 
                   'comment', 
                   'blog_id', 
-                  'user_id', 'date_created'],
+                  'user_id', 
+                  'date_created'],
               include: {
                 model: User,
                 attributes: ['name'],
@@ -30,12 +31,13 @@ router.get('/', withAuth, async (req, res) => {
           ],
         })
       const blogs = blogData.map((allBlogs) => allBlogs.get({ plain: true }));
-      console.log(blogs);
 
-      res.render('dashboard', {posts, logged_in: true, username: req.session.username});
+      res.render('dashboard', {blogs, logged_in: true, username: req.session.username});
     } catch (err) {
       res.status(500).json(err);
     }
 });
 
+// /dashboard/new
+// POST ROUTE TO CREATE A NEW BLOG POST
 module.exports = router;
