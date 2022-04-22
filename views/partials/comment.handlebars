@@ -1,7 +1,11 @@
 <div class="comments">
     {{#each comments as |comment|}}
     <div class="card">
-        <h3 class="card-header"></h3>
+        <h3 class="card-header d-flex justify-content-around">
+            <button type="submit" class="btn"><a class="link" href="/api/comments">+ New Comment </a></button>
+            <button type="submit" class="btn"><a class="link" href="/api/comments/{{id}}"> Update Comment </a></button>
+            <button type="submit" class="btn"><a class="link" href="/api/comments/delete/{{id}}"> Delete Comment </a></button>
+        </h3>
         <section class="comment card-body">
             <div class="text">
                 {{comment}}
@@ -12,4 +16,4 @@
         </section>
     </div>
     {{/each}}
-</div>
+</div> 
