@@ -38,16 +38,28 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-// /dashboard/
-// POST ROUTE TO CREATE A NEW BLOG POST
-router.post('/', withAuth, async (req, res) => {
+router.get('/new', async (req, res) => {
+  res.render('addBlog', {
+    logged_in: req.session.logged_in,
+    username: req.session.name,
+  })
+});
+// /dashboard/new
+// // POST ROUTE TO CREATE A NEW BLOG POST
+router.post('/new', withAuth, async (req, res) => {
   try {
-    const newBlog = await Blog.create(req.body);
+    const newBlog = await Blog.create(...req.body);
     req.session.save(() => {
       req.session.user_id = newBlog.id;
       req.session.logged_in = true;
-
-      res.render('addBlog', {newBlog, logged_in: true, username: req.session.username});
+      res.render('addBlog', { newBlog, logged_in: true, username: req.session.username});
+    });
+    console.log(newBlog)
+    const blog = newBlog.get({ plain: true });
+    console.log(blog)
+    res.render('dashboard', {
+      ...withAuthblog,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(400).json(err);

@@ -1,11 +1,11 @@
-const newFormHandler = async (event) => {
+const blogFormHandler = async (event) => {
     event.preventDefault();
   
     const name = document.querySelector('#blog-name').value.trim();
     const description = document.querySelector('#blog-description').value.trim();
   
     if (name && description) {
-      const response = await fetch(`/api/blogs`, {
+      const response = await fetch(`/api/blogs/new`, {
         method: 'POST',
         body: JSON.stringify({ name, description }),
         headers: {
@@ -14,34 +14,36 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        // document.location.replace('/dashboard');
+        document.location.reload();
       } else {
-        alert('Failed to add a blog post');
+        alert(response.statusText)
+        document.querySelector('blog-form').style.display='block';
       }
     }
   };
-  
-  const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
-  
-      const response = await fetch(`/api/blogs/${id}`, {
-        method: 'DELETE',
-      });
-  
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to delete project');
-      }
-    }
-  };
-  
+
   document
-    .querySelector('.create-blog-form')
-    .addEventListener('submit', newFormHandler);
+  .querySelector('.btn').addEventListener('submit', blogFormHandler)
   
-  document
-    .querySelector('.blog-list')
-    .addEventListener('click', delButtonHandler);
+  // const delButtonHandler = async (event) => {
+  //   if (event.target.hasAttribute('data-id')) {
+  //     const id = event.target.getAttribute('data-id');
+  
+  //     const response = await fetch(`/api/blogs/${id}`, {
+  //       method: 'DELETE',
+  //     });
+  
+  //     if (response.ok) {
+  //       document.location.replace('/');
+  //     } else {
+  //       alert('Failed to delete project');
+  //     }
+  //   }
+  // };
+
+
+  // document
+  //   .querySelector('.blog-list')
+  //   .addEventListener('click', delButtonHandler);
   

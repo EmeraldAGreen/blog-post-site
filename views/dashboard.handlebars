@@ -1,15 +1,27 @@
  {{!-- WHEN I click on the dashboard option in the navigation
 THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post --}}
- {{#if blogs.length}}
-<section class="container-fluid">
-    <h2>Your Blog Posts</h2>
-    {{#each blogs as |blog|}}
-    {{>blog-post blog}}
+  {{#if blogs.length}}
+  <div class="container-fluid">
+    <h3>Your Blogs:</h3>
+
+    {{#each blog as |blogs|}}
+    <div class="card">
+      <div class="card-header">
+        <h4><a href="/blogs/{{blog.id}}">{{blog.name}}</a></h4>
+      </div>
+      <div class="card-body">
+        {{> blog-post}}
+        {{> comment}}
+      </div>
+        <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
+      </div>
+    </div>
     {{/each}}
-
+  </div>
+  <button type="submit" class="btn"><a class="link" href="/dashboard/new">+ New Post</a></button>
+</div>
+  {{/if}}
 </section>
-{{/if}}
+{{!-- <script src="/js/blog.js"></script> --}}
 
-<button type="submit" class="btn"><a class="link" href="/dashboard/">+ New Post</a></button>
 
-<script src="../public/js/blog.js"></script>
