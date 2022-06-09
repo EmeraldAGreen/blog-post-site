@@ -89,16 +89,16 @@ router.get('/', async (req, res) => {
 //     }
 //   });
 
-router.get('/new', async (req, res) => {
-  res.render('dashboard', {
-    logged_in: req.session.logged_in,
-    username: req.session.name,
-  })
-});
+// router.get('/new', async (req, res) => {
+//   res.render('dashboard', {
+//     logged_in: req.session.logged_in,
+//     username: req.session.username,
+//   })
+// });
 
 // Create a new blog post
 // /api/blogs/new
-router.post('/new', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   console.log('we are in')
   try {
     const newBlog = await Blog.create({

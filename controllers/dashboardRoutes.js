@@ -46,24 +46,24 @@ router.get('/new', async (req, res) => {
 });
 // /dashboard/new
 // // POST ROUTE TO CREATE A NEW BLOG POST
-router.post('/new', withAuth, async (req, res) => {
-  try {
-    const newBlog = await Blog.create(...req.body);
-    req.session.save(() => {
-      req.session.user_id = newBlog.id;
-      req.session.logged_in = true;
-      res.render('addBlog', { newBlog, logged_in: true, username: req.session.username});
-    });
-    console.log(newBlog)
-    const blog = newBlog.get({ plain: true });
-    console.log(blog)
-    res.render('dashboard', {
-      ...withAuthblog,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+// router.post('/new', withAuth, async (req, res) => {
+//   try {
+//     const newBlog = await Blog.create({...req.body, user_id: req.session.user_id});
+//     // req.session.save(() => {
+//     //   req.session.user_id = newBlog.id;
+//     //   req.session.logged_in = true;
+//     //   res.render('addBlog', { newBlog, logged_in: true, username: req.session.username});
+//     // });
+//     console.log(newBlog)
+//     const blog = newBlog.get({ plain: true });
+//     console.log(blog)
+//     // res.render('dashboard', {
+//     //   ...withAuthblog,
+//     //   logged_in: req.session.logged_in
+//     // });
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 module.exports = router;

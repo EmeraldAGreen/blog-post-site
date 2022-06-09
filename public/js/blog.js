@@ -4,23 +4,21 @@ const blogFormHandler = async (event) => {
     const name = document.querySelector('#blog-name').value.trim();
     const description = document.querySelector('#blog-description').value.trim();
   
-    if (name && description) {
-      const response = await fetch(`/api/blogs/new`, {
+      const response = await fetch(`/api/blogs/`, {
         method: 'POST',
         body: JSON.stringify({ name, description }),
         headers: {
           'Content-Type': 'application/json',
-        },
+        }
       });
   
       if (response.ok) {
-        // document.location.replace('/dashboard');
-        document.location.reload();
+        document.location.replace('/dashboard');
+        // document.location.reload();
       } else {
         alert(response.statusText)
         document.querySelector('blog-form').style.display='block';
       }
-    }
   };
 
   document
